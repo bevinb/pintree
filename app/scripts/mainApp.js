@@ -1,15 +1,10 @@
 'use strict';
-var pintree = angular.module('pintree', ['wu.masonry', 'ngRoute', 'ngCookies', 'restangular', 'ui.bootstrap', 'ngSanitize', 'angular-loading-bar','angularMoment']);
+var pintree = angular.module('pintree', ['wu.masonry', 'ngRoute', 'ngCookies', 'restangular', 'ui.bootstrap', 'ngSanitize',
+    'angular-loading-bar','angularMoment', 'angularModalService']);
 
 pintree.config(['$routeProvider', 'RestangularProvider', '$httpProvider', 'constants',
     function ($routeProvider, RestangularProvider, $httpProvider, constants) {
-    //don't change the url below
-    //use OS env FLEET_SERVER instead before gulp serve
-    //for example: set FLEET_SERVER=http://localhost:8080 on windows
-    //by default, the server use http://221.11.84.227:8080
-    //for guy behind corp proxy
-    //use OS env http_proxy
-    //for example: set http_proxy=http://proxy.host.name:3128 on windows
+
     RestangularProvider.setBaseUrl(constants.BASE_URL);
     RestangularProvider.setDefaultHttpFields({cache: false});
 

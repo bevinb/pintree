@@ -14,8 +14,9 @@ angular.module('pintree').controller('LoginCtrl', ['$scope', '$window', 'Auth', 
                 type: "danger"
             });
         })
+    };
 
-
-
-    }
+    $scope.dismissModal = function(result) {
+        $('.signin-popup').hide();
+    };
 }]);

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$location', '$window', '$cacheFactory', 'Auth', 'alertService', 'utilService', 'carsService', 'constants',
-    function($rootScope, $scope, $location, $window, $cacheFactory, Auth, alertService, utilService, carsService, constants) {
+angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$location', '$window', '$cacheFactory', 'Auth', 'alertService', 'utilService', 'ModalService', 'constants',
+    function($rootScope, $scope, $location, $window, $cacheFactory, Auth, alertService, utilService, ModalService, constants) {
 
     $scope.searchParams = {};
 
@@ -18,25 +18,47 @@ angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$loca
         $scope.$broadcast("search", {params: $scope.searchParams});
     };
 
-    $scope.initBroadcastInput = function(input){
-        $(input).autocomplete({
-            minLength: 0,
-            autoFocus: true,
-            source: constants.BROADCAST_OPTIONS
+    $scope.showLogInModal = function() {
+        ModalService.showModal({
+            templateUrl: "partials/login.html",
+            controller: "LoginCtrl"
+        }).then(function(modal) {
+            // The modal object has the element built, if this is a bootstrap modal
+            // you can call 'modal' to show it, if it's a custom modal just show or hide
+            // it as you need to.
+            modal.element.show();
+            modal.close.then(function(result) {
+                $scope.message = result ? "You said Yes" : "You said No";
+            });
         });
     };
-    /*
-    $(document).keydown(function(e){
-        alert(222)
-        if(e.which == 13){
-            var target = $(e.target);
-            var targetCar = target.attr('broadcast-target-car');
-            //if(targetCar && target.val()){
-                carsService.sendBroadcast(111, 222, function(){});
-            //}
-        }
-    });
-    */
+
+        $scope.showSignUpModal = function() {
+            ModalService.showModal({
+                templateUrl: "partials/signup.html",
+                controller: "SignUpCtrl"
+            }).then(function(modal) {
+                // The modal object has the element built, if this is a bootstrap modal
+                // you can call 'modal' to show it, if it's a custom modal just show or hide
+                // it as you need to.
+                modal.element.show();
+                modal.close.then(function(result) {
+                });
+            });
+        };
+
+        /*
+        $(document).keydown(function(e){
+            alert(222)
+            if(e.which == 13){
+                var target = $(e.target);
+                var targetCar = target.attr('broadcast-target-car');
+                //if(targetCar && target.val()){
+                    carsService.sendBroadcast(111, 222, function(){});
+                //}
+            }
+        });
+        */
 
 
 }]);
