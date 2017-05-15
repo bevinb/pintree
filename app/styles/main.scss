@@ -1,0 +1,170 @@
+@charset "utf-8";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/scaffolding";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/utilities";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/grid";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/buttons";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/forms";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/input-groups";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/list-group";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/media";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/dropdowns";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/alerts";
+
+@import "partials/header";
+@import "partials/search_bar";
+@import "partials/tree_item";
+@import "partials/detail_modal_viewer";
+@import "partials/sign_in";
+
+body{
+  font-family: "Microsoft YaHei","微软雅黑","华文细黑",Helvetica,Tahoma,Arial,sans-serif;
+  min-width:980px;
+  min-height:600px;
+  background-color: rgb(250, 249, 247);
+}
+
+.wrapper {
+  width:100%;
+  max-width: 1496px;
+  margin: auto;
+  padding:0 10px;
+}
+
+#wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+#mapCt {
+  width:100%;
+  max-width: 1496px;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+}
+
+#mainNav {
+  background-color: #fff;
+  height:100px;
+}
+
+.footer {
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}
+
+.masonry-brick {
+  margin: 10px;
+  display: none;
+}
+
+.masonry-brick.loaded {
+  display: block;
+}
+
+input {
+ transition:0.5s linear all;
+ background: white;
+}
+input.ng-invalid {
+  border: 1px solid red !important;
+  background-color: #f2dede;
+}
+
+.alert {
+  position:fixed;
+  z-index:10000;
+  top:10px;
+  width:auto;
+  min-width: 240px;
+  right:10px;
+  border:0;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+
+  .close {
+    position: relative;
+    top: -2px;
+    right: -21px;;
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    &:hover {
+      filter: alpha(opacity=100);
+      opacity: 1;
+    }
+  }
+  a {
+    color: #fff !important;
+    font-weight: normal;
+  }
+}
+
+.search-bar-wrapper {
+  padding: 10px;
+  background-color: #fff;
+  position: fixed;
+  top: 55px;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  text-align: center;
+  .advanced-search-bar {
+    max-width: 1496px;
+  }
+}
+
+.btn-download {
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width:50px;
+  height:50px;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0.5);
+  background-image: url(../images/index_update_streams/u490.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 24px 24px;
+}
+
+.download-notification {
+  color: #fff;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width:450px;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0.8);
+  text-align: center;
+  padding-bottom:20px;
+  .btn-bar {
+    .btn {
+      min-width: 140px;
+      height:40px;
+    }
+    .btn-primary {
+      background-color: rgb(255, 153, 0);
+    }
+    .btn-secondary {
+      color:#666;
+      margin-left:10px;
+    }
+  }
+}

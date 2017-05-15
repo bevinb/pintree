@@ -1,0 +1,40 @@
+<div masonry load-images="true" ng-class="{'download': mode=='download'}">
+    <div class="tree-item masonry-brick" ng-repeat="brick in bricks">
+        <div class="thumbnail" ng-class="{'checked': brick.isChecked}" ng-click="toggleSelection(brick)">
+            <div class="project-cover" project_title="Ellersielie Apartment Building " project-id="7368" project-link="/projects/7368/ellersielie-apartment-building?searched=">
+                <img ng-src="{{ brick.src }}" alt="">
+                <div class="cover-mask">
+                    <p>中文名：榉树</p>
+                    <p>拉丁名：Zelkova serrata</p>
+                    <p>别名：榉木、红鸡油、 …</p>
+                    <p>界：植物界 Plantae</p>
+                    <i class="btn-like liked"></i>
+                    <i class="btn-check"></i>
+                </div>
+            </div>
+            <div class="item-info">图片名称太长怎么办，换两行呗，一行限制字数。恩～就这么办</div>
+        </div>
+        <div class="user-info">
+            <div class="media clearfix">
+                <a href="/users/36ZFMLPBWQJV" class="media-object pull-left">
+                    <img class="img avatar" src="/images/avatar.png">
+                </a>
+                <a href="/users/36ZFMLPBWQJV" class="media-body">
+                    Jagdip Singh
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="detail-modal-viewer" ng-model="currentTree" on-close="currentTree=null" ng-show="!!currentTree"></div>
+
+<div class="btn-download" ng-show="mode!='download'" title="点击开始下载" ng-click="changeMode('download')"></div>
+
+<div class="download-notification" ng-show="selections.length > 0">
+    <p>大侠，已经选中{{selections.length}}株花花草草，接着打算去干嘛？</p>
+    <div class="btn-bar">
+        <button class="btn btn-primary" ng-click="startDownload()">下载，占有它们</button>
+        <button class="btn btn-secondary" ng-click="cancelDownload()">都不是我想要的</button>
+    </div>
+</div>

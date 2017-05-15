@@ -1,0 +1,108 @@
+.quick-search-bar {
+  padding: 10px;
+  background-color: #fff;
+  position: fixed;
+  top: 55px;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  overflow: hidden;
+  .search-tag {
+    display: inline-block;
+    color: #fff;
+    border-radius: 3px;
+    background-color: rgb(102, 102, 102);
+    min-width: 135px;
+    height:50px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+}
+
+advanced-search-filter {
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+  .search-tag {
+    display: inline-block;
+    color: #fff;
+    border-radius: 3px;
+    background-color: rgb(102, 102, 102);
+    min-width: 135px;
+    height:50px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  .search-row {
+    height:50px;
+    line-height: 50px;
+    .title {
+      color:#999;
+      float: left;
+      min-width: 56px;
+    }
+    .option-list {
+      float: left;
+      margin-left:40px;
+      .option {
+        margin-right: 40px;
+        label {
+          cursor: pointer;
+          font-weight: normal;
+          color: #666;
+        }
+        input {
+          margin-right:4px;
+        }
+      }
+      .color-select {
+        margin: 10px 10px 0 0;
+        cursor: pointer;
+        display: inline-block;
+        width:30px;
+        height:30px;
+        border-radius: 3px;
+        &.checked {
+          background-image: url(../images/search_advanced_filter/u1654.png);
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 20px 20px;
+        }
+      }
+    }
+    .keyword-list {
+      float:left;
+      margin-left:40px;
+      .keyword {
+        cursor: pointer;
+        margin-right:20px;
+      }
+    }
+    .toggle-advance {
+      float:right;
+      cursor: pointer;
+      text-decoration: none;
+      color:#999;
+      &:hover {
+        color:#666;
+      }
+    }
+  }
+  .divider {
+    clear: both;
+    height:2px;
+    width:100%;
+    background-image: url(../images/search_advanced_filter/u1562.png);
+  }
+  .btn-bar {
+    text-align: center;
+    padding:10px;
+    .btn:first-child {
+      margin-right: 10px;
+    }
+  }
+}

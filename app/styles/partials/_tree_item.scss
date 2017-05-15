@@ -1,0 +1,124 @@
+.tree-item {
+  width:20%;
+  width: -moz-calc(25% - 20px);
+  width: -webkit-calc(25% - 20px);
+  width: calc(25% - 20px);
+  color:#333;
+  font-weight: 400;
+  font-size: 12px;
+
+  .thumbnail {
+    border: 1px solid rgb(242, 242, 242);
+    -moz-box-shadow: 2px 2px 5px rgba(228, 228, 228, 0.349019607843137);
+    -webkit-box-shadow: 2px 2px 5px rgba(228, 228, 228, 0.349019607843137);
+    box-shadow: 2px 2px 5px rgba(228, 228, 228, 0.349019607843137);
+    cursor: pointer;
+
+    .project-cover {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
+      overflow: hidden;
+      img {
+        width:100%;
+      }
+      .cover-mask {
+        display: none;
+        position: absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background-color: rgba(255,255,255,0.9);
+        padding: 10px;
+        .btn-like {
+          position:absolute;
+          top:10px;
+          right:10px;
+          width:40px;
+          height:40px;
+          border-radius: 3px;
+          background-image: url(../images/index_update_streams/u17.png);
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 30px 30px;
+          background-color: #fff;
+        }
+        .btn-check {
+          display: none;
+          position:absolute;
+          top:10px;
+          left:10px;
+          width:40px;
+          height:40px;
+          border-radius: 3px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 30px 30px;
+          background-color: #fff;
+        }
+      }
+    }
+
+    .item-info {
+      padding: 10px;
+      max-height: 50px;
+      background-color: #fff;
+      overflow: hidden;
+    }
+
+    &:hover {
+      -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349019607843137);
+      -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349019607843137);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.349019607843137);
+      .project-cover {
+        .cover-mask {
+          display: block;
+        }
+      }
+    }
+
+    &.checked {
+      .project-cover {
+        .cover-mask {
+          display: block !important;
+          .btn-check {
+            display: block !important;;
+            background-image: url(../images/index_update_streams_selected_download/u975.png);
+          }
+        }
+      }
+    }
+  }
+
+  .user-info {
+    font-size: 13px;
+    padding: 10px;
+    .avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50% 50%;
+    }
+  }
+}
+
+.download {
+  .tree-item {
+    .thumbnail {
+      .project-cover {
+        .cover-mask {
+          p {
+            display: none !important;
+          }
+          .btn-like {
+            display: none !important;
+          }
+          .btn-check {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
