@@ -6,7 +6,10 @@ var $ = require('gulp-load-plugins')();
 var saveLicense = require('uglify-save-license');
 var gulp = require('gulp');
 var gulpFilter = require('gulp-filter');
+var gulpif = require('gulp-if');
+var uglify = require('gulp-uglify');
 var useref = require('gulp-useref');
+var minifyCss = require('gulp-minify-css');
 
 gulp.task('styles', function () {
   return $.rubySass('app/styles/', {
@@ -49,7 +52,7 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
     .pipe(userefAssets)
     .pipe($.rev())
     .pipe(jsFilter)
-    .pipe($.ngmin())
+    .pipe($.ngAnnotate())
     .pipe(gulpif('*.js', uglify()))
     .pipe(gulpif('*.css', minifyCss()))
     .pipe($.uglify({preserveComments: saveLicense}))
