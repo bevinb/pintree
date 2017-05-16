@@ -7,6 +7,7 @@
                     <a href="#" onclick="return false;" class="btn-like"></a>
                     <a href="#" onclick="return false;" class="btn-zoomin" ng-click="zoomIn()"></a>
                     <div class="right-part">
+                        <!--
                         <div class="huaban-share-unit"><span>分享</span>
                             <div class="share-btns">
                                 <a data-to="weibo" title="新浪微博" target="_blank" href="/pins/159900488/js-share/?to=weibo" class="share-btn weibo"></a>
@@ -22,9 +23,10 @@
                                 <div class="arr"></div>
                             </div>
                         </div>
-                        <a href="/pins/159900488/zoom/" title="查看原图" class="zoomin btn-with-icon btn">
+                        <a href="" title="查看原图" class="zoomin btn-with-icon btn">
                             <i class="class"></i>
                         </a>
+                        -->
                     </div>
                 </div>
                 <div class="main-image">
@@ -62,45 +64,13 @@
                 </div>
             </div>
             <div class="info-piece piece">
-                <!--
-                <div class="info"><a href="/flyinsky88/" title="Flyinsky88" rel="nofollow" class="img x"><img
-                        src="//img.hb.aicdn.com/1d16a79ac7cffbec844eb48e7e714c9f8c0afffc7f997-ZZCJsm_sq75sf"
-                        data-baiduimageplus-ignore="1" class="avt"></a>
-
-                    <div class="main"><a href="/flyinsky88/" rel="nofollow">Flyinsky88</a></div>
-                    <div class="sub">通过<a href="http://huaban.com/about/goodies/?ref=pins  " target="_blank"
-                                          rel="nofollow" class="space brown-link">书签栏工具</a>采集于<span
-                            data-ts="1398822115" class="ts-words space">2014-04-30 09:41:55</span></div>
-                </div>
-                <div class="description">fotografiae:<br>two by Saelanwangsa. <a class="text-meta meta-link"
-                                                                                 rel="nofollow"
-                                                                                 href="http://ift.tt/1gufgOV"
-                                                                                 title="http://ift.tt/1gufgOV"
-                                                                                 target="_blank"><span
-                        class="invisible">http://</span><span class="">ift.tt/1gufgOV</span><span
-                        class="invisible"></span><span class="ellipsis"><span class="invisible">&nbsp;</span></span></a><br>
-                </div>
-                <div class="comments"></div>
-                <div id="pin_view_add_comment" data-id="159900488" class="clearfix"><a href="//" title=""
-                                                                                       class="img x"><img
-                        src="//img.hb.aicdn.com/654953460733026a7ef6e101404055627ad51784a95c-B6OFs4_sq75sf"
-                        data-baiduimageplus-ignore="1" class="avatar"></a><textarea name="caption"
-                                                                                    placeholder="添加评论或把采集@给好友"
-                                                                                    class="clear-input"></textarea><a
-                        href="#" onclick="return false;" class="post disabled btn btn14"><span
-                        class="text"> 添加评论</span></a></div>
-                <div class="likes clearfix"><h4>1喜欢</h4><a href="/o9klgahxbk/" title="超长老猫" class="img x"><img
-                        width="46" height="46"
-                        src="//img.hb.aicdn.com/7755920462bbdd14ae7623eb68a3c768b82ff5fbf8de-5HAm65_sq75sf"
-                        data-baiduimageplus-ignore="1"></a></div>
-                        -->
             </div>
             <div class="bottom-part">
                 <div class="pin-view-wrapper">
                     <div class="related-boards clearfix" style="display: block;">
                         <div class="title-el">你可能还感兴趣的...</div>
                         <div class="board-box clearfix">
-                            <div masonry load-images="true">
+                            <div masonry reload-on-show reload-on-resize load-images="true" style="width:1000px;">
                                 <div class="tree-item masonry-brick" ng-repeat="brick in relatedTrees">
                                     <div class="thumbnail">
                                         <div class="project-cover" project_title="Ellersielie Apartment Building " project-id="7368" project-link="/projects/7368/ellersielie-apartment-building?searched=">
@@ -117,12 +87,10 @@
                                     </div>
                                     <div class="user-info">
                                         <div class="media clearfix" author_name="Jagdip Singh" onclick="gaSendEvent('Navi', 'TileView on Search', this.getAttribute('author_name'))">
-                                            <a href="/users/36ZFMLPBWQJV" class="media-object pull-left">
+                                            <a href="#" class="media-object pull-left">
                                                 <img class="img avatar" src="/images/avatar.png">
                                             </a>
-                                            <a href="/users/36ZFMLPBWQJV" class="media-body">
-                                                Jagdip Singh
-                                            </a>
+                                            <a href="#" class="media-body">Author name</a>
                                         </div>
                                     </div>
                                 </div>
@@ -137,19 +105,18 @@
                 <h2>榉树<span>Zelkova serrata</span></h2>
                 <div class="divider"></div>
                 <div class="props">
-                    <div class="prop-row"><span class="title">树形</span><span class="content"></span></div>
+                    <div class="prop-row"><span class="title" style="width:42px;">树形</span><i class="icon-leaf"></i></div>
                     <div class="prop-row"><span class="title">质感</span><span class="content">细腻</span></div>
-                    <div class="prop-row"><span class="title">观赏性</span><span class="content"></span></div>
+                    <div class="prop-row"><span class="title">观赏性</span><i class="icon-flower"></i></div>
                     <div class="prop-row"><span class="title">种类</span><span class="content">大乔木</span></div>
                 </div>
                 <div class="divider"></div>
                 <div class="other-props">
-                    <div class="prop-row">
-                        <span class="title">树形</span>
-                        <i class="icon-rain"></i>
-                        <i class="icon-snow"></i>
-                        <i class="icon-temp"></i>
-                    </div>
+                    <span class="title">其他特征</span>
+                    <i class="icon-rain"></i>
+                    <i class="icon-snow"></i>
+                    <i class="icon-temp"></i>
+                    <div class="more">更多<i class="icon-arrow"></i></div>
                 </div>
                 <div class="divider"></div>
             </div>
