@@ -19,6 +19,25 @@
     cursor: pointer;
     margin-right: 10px;
   }
+  .slick-slider {
+    .slick-prev, .slick-next {
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 20px 20px;
+      &:before {
+        content: '';
+      }
+      &.slick-disabled {
+        display: none !important;
+      }
+    }
+    .slick-prev {
+      background-image: url(../images/index_update_streams/u211-2.png);
+    }
+    .slick-next {
+      background-image: url(../images/index_update_streams/u290-2.png);
+    }
+  }
 }
 
 advanced-search-filter {

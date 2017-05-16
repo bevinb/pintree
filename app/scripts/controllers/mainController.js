@@ -52,6 +52,12 @@ angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$loca
             });
         };
 
+        $('.quick-search-bar .wrapper').slick({
+            infinite: false,
+            slidesToShow: 8,
+            slidesToScroll: 1
+        });
+
         /*
         $(document).keydown(function(e){
             alert(222)
