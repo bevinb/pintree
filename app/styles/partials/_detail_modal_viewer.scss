@@ -40,6 +40,9 @@
     width: 940px;
     float: left;
     background: #fff;
+    .image-holder {
+      cursor: url(../images/index_update_streams/u239.png);
+    }
   }
   .side-part {
     position: absolute;
@@ -65,22 +68,50 @@
       margin-bottom:10px;
       width:50%;
       .title {
-        display:table-cell;
+        display:inline-block;
+        line-height: 30px;
+        height: 30px;
+        vertical-align: middle;
       }
       .content {
-        display:table-cell;
+        display:inline-block;
         margin-left:10px;
         background-color: #fff;
         border-radius: 3px;
         padding: 0 10px;
+        line-height: 30px;
+        height: 30px;
+        vertical-align: middle;
+      }
+    }
+    .props {
+      i {
+        margin-left:10px;
+        display: inline-block;
+        vertical-align: middle;
+        width:30px;
+        height:30px;
+        border-radius: 3px;
+        background-repeat: no-repeat;
+        background-color: #fff;
+        background-position: center;
+        background-size: 20px 20px;
+        &.icon-leaf {
+          background-image: url(../images/index_update_streams/u259.png);
+        }
+        &.icon-flower {
+          background-image: url(../images/index_update_streams/u264.png);
+        }
       }
     }
     .other-props {
       i {
         display: inline-block;
+        vertical-align: middle;
         width:20px;
         height:20px;
-        margin-right:10px;
+        margin-left:10px;
+        background-repeat: no-repeat;
         background-position: center;
         background-size: 20px 20px;
         &.icon-rain {
@@ -92,6 +123,17 @@
         &.icon-temp {
           background-image: url(../images/index_update_streams/u286.png);
         }
+        &.icon-arrow {
+          margin-left:0;
+          background-size: 10px 10px;
+          background-image: url(../images/index_update_streams/u290.png);
+        }
+      }
+      .more {
+        cursor: pointer;
+        margin-left:10px;
+        display: inline-block;
+        color:#666;
       }
     }
     .divider {

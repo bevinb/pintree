@@ -1,7 +1,7 @@
-<div masonry load-images="true" ng-class="{'download': mode=='download'}">
+<div masonry load-images="true" reload-on-show reload-on-resize ng-class="{'download': mode=='download'}">
     <div class="tree-item masonry-brick" ng-repeat="brick in bricks">
         <div class="thumbnail" ng-class="{'checked': brick.isChecked}" ng-click="toggleSelection(brick)">
-            <div class="project-cover" project_title="Ellersielie Apartment Building " project-id="7368" project-link="/projects/7368/ellersielie-apartment-building?searched=">
+            <div class="project-cover">
                 <img ng-src="{{ brick.src }}" alt="">
                 <div class="cover-mask">
                     <p>中文名：榉树</p>
@@ -16,12 +16,10 @@
         </div>
         <div class="user-info">
             <div class="media clearfix">
-                <a href="/users/36ZFMLPBWQJV" class="media-object pull-left">
+                <a href="" class="media-object pull-left">
                     <img class="img avatar" src="/images/avatar.png">
                 </a>
-                <a href="/users/36ZFMLPBWQJV" class="media-body">
-                    Jagdip Singh
-                </a>
+                <a href="" class="media-body">Author name</a>
             </div>
         </div>
     </div>

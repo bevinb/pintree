@@ -37,18 +37,26 @@ angular.module('pintree').directive('detailModalViewer', ['$compile', 'utilServi
                         };
                     };
 
-                    scope.relatedTrees = [
-                        genBrick(),
-                        genBrick(),
-                        genBrick(),
-                        genBrick(),
-                        genBrick(),
-                        genBrick(),
-                        genBrick(),
-                        genBrick(),
-                        genBrick(),
-                        genBrick()
-                    ];
+                    function genBricks() {
+                        return [
+                            genBrick(),
+                            genBrick(),
+                            genBrick(),
+                            genBrick(),
+                            genBrick(),
+                            genBrick(),
+                            genBrick(),
+                            genBrick(),
+                            genBrick(),
+                            genBrick()
+                        ];
+                    };
+
+                    //scope.$watch('value', function(){
+                        scope.relatedTrees = genBricks();
+                    //}, true);
+
+
                 },
 
                 post: function(scope, element, iAttrs, controller) {

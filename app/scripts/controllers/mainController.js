@@ -11,6 +11,11 @@ angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$loca
 
     //register keydown event to send broadcast
 
+    $scope.setKeyword = function(keyword){
+        $scope.keyword = keyword;
+        $scope.doSearch();
+    };
+
     $scope.doSearch = function(){
         //$scope.$apply(function(){
             $scope.searchParams.keyword = $scope.keyword;

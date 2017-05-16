@@ -94,14 +94,6 @@ angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$ro
     ];
 
 
-
-    $scope.remove = function remove() {
-        $scope.bricks.splice(
-            ~~(Math.random() * $scope.bricks.length),
-            1
-        )
-    };
-
     (function(){
 
     })();

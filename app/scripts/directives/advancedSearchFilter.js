@@ -12,13 +12,6 @@ angular.module('pintree').directive('advancedSearchFilter', ['$compile', 'utilSe
         },
         compile: function compile(tElement, tAttrs, transclude) {
 
-            $(document).click(function(e){
-                var tar = $(e.target);
-                if(!tar.hasClass('picker-toggle') && tar.closest('.picker-menu', '.status-picker').length < 1){
-                    $(tElement).removeClass('open');
-                }
-            });
-
             return {
                 pre: function(scope, element, iAttrs) {
                     scope.showAdvanced = false;
