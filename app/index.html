@@ -12,7 +12,6 @@
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
         <!-- endbower -->
-        <link rel="stylesheet" href="bower_components/jquery-ui-custom/jquery-ui.css" />
         <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css" />
         <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css" />
         <!-- endbuild -->
@@ -30,29 +29,29 @@
             <div class="wrapper">
                 <img class="logo" src="images/index_update_streams/u4.png">
                 <div class="search-input-wrapper">
-                    <input class="search-input" ng-model="keyword" placeholder="搜你喜欢的...">
-                    <a class="btn-search" ng-keypress="$event.keyCode == 13 && doSearch()" ng-click="doSearch()"></a>
+                    <input class="search-input" ng-model="keyword" ng-keydown="$event.keyCode == 13 && doSearch()" placeholder="搜你喜欢的...">
+                    <a class="btn-search" ng-click="doSearch()"></a>
                 </div>
                 <a class="link-signup" ng-click="showSignUpModal()">注册</a>
                 <a class="link-signin" ng-click="showLogInModal()">登录</a>
             </div>
         </header>
         <div id="wrapper">
-            <div class="quick-search-bar" ng-show="!searchParams.keyword">
+            <div class="quick-search-bar" ng-show="!searchParams.keyword" ng-click="setKeyword($event.target)">
                 <div class="wrapper">
-                    <a class="search-tag" search-link="展开形" ng-click="setKeyword('展开形')">展开形</a>
-                    <a class="search-tag" search-link="华南区" ng-click="setKeyword('华南区')">华南区</a>
-                    <a class="search-tag" search-link="大乔" ng-click="setKeyword('大乔')">大乔</a>
-                    <a class="search-tag" search-link="行道树" ng-click="setKeyword('行道树')">行道树</a>
-                    <a class="search-tag" search-link="速生" ng-click="setKeyword('速生')">速生</a>
-                    <a class="search-tag" search-link="开花" ng-click="setKeyword('开花')">开花</a>
-                    <a class="search-tag" search-link="针叶" ng-click="setKeyword('针叶')">针叶</a>
-                    <a class="search-tag" search-link="圆球形" ng-click="setKeyword('圆球形')">圆球形</a>
-                    <a class="search-tag" search-link="圆球形" ng-click="setKeyword('圆球形')">圆球形</a>
-                    <a class="search-tag" search-link="圆球形" ng-click="setKeyword('圆球形')">圆球形</a>
-                    <a class="search-tag" search-link="圆球形" ng-click="setKeyword('圆球形')">圆球形</a>
-                    <a class="search-tag" search-link="圆球形" ng-click="setKeyword('圆球形')">圆球形</a>
-                    <a class="search-tag" search-link="圆球形" ng-click="setKeyword('圆球形')">圆球形</a>
+                    <a class="search-tag" search-link="展开形">展开形</a>
+                    <a class="search-tag" search-link="华南区">华南区</a>
+                    <a class="search-tag" search-link="大乔">大乔</a>
+                    <a class="search-tag" search-link="行道树">行道树</a>
+                    <a class="search-tag" search-link="速生">速生</a>
+                    <a class="search-tag" search-link="开花">开花</a>
+                    <a class="search-tag" search-link="针叶">针叶</a>
+                    <a class="search-tag" search-link="圆球形">圆球形</a>
+                    <a class="search-tag" search-link="圆球形">圆球形</a>
+                    <a class="search-tag" search-link="圆球形">圆球形</a>
+                    <a class="search-tag" search-link="圆球形">圆球形</a>
+                    <a class="search-tag" search-link="圆球形">圆球形</a>
+                    <a class="search-tag" search-link="圆球形">圆球形</a>
                 </div>
             </div>
 
@@ -67,20 +66,6 @@
             <div id="mapCt" class="container" ng-view=""></div>
             <div class="footer">© Copyright 2016</div>
         </div>
-
-
-
-        <div class="black-overlay signup-popup">
-            <div id="signup_frame" style="margin-top: -215px;">
-                <img src="/img/logo_2x.png" width="106" height="36" data-baiduimageplus-ignore="1" class="logo">
-                <div class="sign-up" style="display: none;">
-                    <div class="holder">
-                        <a class="switch-email-signup brown-link">使用手机号/邮箱注册</a></div>
-                    <div class="switch">已有帐号？<a class="brown-link">登录</a></div>
-                </div>
-            </div>
-        </div>
-
 
         <!-- build:js scripts/vendor.js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>

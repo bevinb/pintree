@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$location', '$window', '$cacheFactory', 'Auth', 'alertService', 'utilService', 'ModalService', 'constants',
-    function($rootScope, $scope, $location, $window, $cacheFactory, Auth, alertService, utilService, ModalService, constants) {
+angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$location', '$window', '$cacheFactory', '$timeout', 'alertService', 'utilService', 'ModalService', 'constants',
+    function($rootScope, $scope, $location, $window, $cacheFactory, $timeout, alertService, utilService, ModalService, constants) {
 
     $scope.searchParams = {};
 
@@ -10,11 +10,6 @@ angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$loca
     $scope.alarmsOn = false;
 
     //register keydown event to send broadcast
-
-    $scope.setKeyword = function(keyword){
-        $scope.keyword = keyword;
-        $scope.doSearch();
-    };
 
     $scope.doSearch = function(){
         //$scope.$apply(function(){
@@ -52,11 +47,22 @@ angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$loca
             });
         };
 
-        $('.quick-search-bar .wrapper').slick({
-            infinite: false,
-            slidesToShow: 8,
-            slidesToScroll: 1
-        });
+        $scope.setKeyword = function(target){
+            if(target.getAttribute('search-link')) {
+                $scope.keyword = target.getAttribute('search-link');
+                $scope.doSearch();
+            }
+        };
+
+
+        $timeout(function(){
+            $('.quick-search-bar .wrapper').slick({
+                infinite: false,
+                slidesToShow: 8,
+                slidesToScroll: 1
+            });
+        }, 1);
+
 
         /*
         $(document).keydown(function(e){
