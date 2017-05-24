@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$routeParams', '$timeout', 'utilService', 'constants',
-    function($rootScope, $scope, $routeParams, $timeout, utilService, constants) {
+angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$routeParams', '$timeout', 'utilService', 'constants', 'vegetationService',
+    function($rootScope, $scope, $routeParams, $timeout, utilService, constants, vegetationService) {
 
     $scope.searchParams = $rootScope.searchParam;
     $scope.currentTree = null;
@@ -68,6 +68,7 @@ angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$ro
             genBrick(),
             genBrick()
         ];
+        vegetationService.getAll();
      });
 
      function genBrick() {

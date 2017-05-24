@@ -3,14 +3,14 @@ angular.module('pintree').controller('LoginCtrl', ['$scope', '$window', 'Auth', 
 
     $scope.doLogin = function () {
         Auth.login({
-            userName: $scope.userName,
+            username: $scope.username,
             password: $scope.password
         }).then(function () {
                 $window.location.href = '#/';
         }).catch(function (err) {
             console.log(err);
             alertService.add({
-                msg: '登录失败, 工号或密码错误！',
+                msg: '登录失败, 账号或密码错误！',
                 type: "danger"
             });
         })

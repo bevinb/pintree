@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('pintree')
-    .factory('Auth',['$location', '$rootScope', 'Restangular', 'User', '$cookies','$q', function Auth($location, $rootScope, Restangular, User, $cookies,$q) {
+    .factory('Auth',['$location', '$rootScope', 'Restangular', 'User', '$cookies','$q', '$http',
+        function Auth($location, $rootScope, Restangular, User, $cookies,$q, $http) {
         var currentUser = {};
         if ($cookies.get('token')) {
             User.get()
@@ -11,51 +12,81 @@ angular.module('pintree')
         }
 
         return {
-
-            /**
-             * Authenticate user and save token
-             *
-             * @param  {Object}   user     - login info
-             * @param  {Function} callback - optional
-             * @return {Promise}
-             */
-            login: function (user, callback) {
-                var cb = callback || angular.noop;
-
-
-                return Restangular.one("auth/local").customPOST(
-                    {
-                        userName: user.userName,
+            login: function (user) {
+                var deferred = $q.defer();
+                var that = this;
+                $http({
+                    url:'/api/auth/login',
+                    method:'GET',
+                    params: {
+                        username: user.username,
                         password: user.password
-                    },
-                    '',{},{}).then(function (data) {
-                        $cookies.put('token', data.token);
-                        return User.get()
-                            .then(function(user){
-                                currentUser = user;
-                                $rootScope.$broadcast("login.event");
-                                cb();
-                            });
-
-                    }).catch(function (err) {
-                        this.logout();
-                        cb(err);
-                        return $q.reject(err);
-                    }.bind(this));
-
+                    }
+                }).then(function(resp){
+                    $cookies.put('token', resp.headers('token'));
+                    currentUser = resp.data;
+                    $rootScope.$broadcast("login.event");
+                    deferred.resolve(currentUser);
+                }, function(resp){
+                    that.logout();
+                    deferred.reject(resp);
+                });
+                return deferred.promise;
             },
 
-            /**
-             * Delete access token and user info
-             *
-             * @param  {Function}
-             */
             logout: function () {
-                $cookies.remove('token');
-                currentUser = {};
-                $rootScope.$broadcast("logout.event");
+                var deferred = $q.defer();
+                $http({
+                    url:'/api/auth/logout',
+                    method:'GET'
+                }).then(function(resp){
+                    $cookies.remove('token');
+                    currentUser = {};
+                    $rootScope.$broadcast("logout.event");
+                }, function(resp){
+                    deferred.reject(resp);
+                });
+                return deferred.promise;
             },
 
+            signup: function (user) {
+                var deferred = $q.defer();
+                var that = this;
+                $http({
+                    url:'/api/sinup',
+                    method:'POST',
+                    params: {
+                        Email: user.username,
+                        Password: user.password,
+                        SecurityCode: "string",
+                        Username: string
+                    }
+                }).then(function(resp){
+                    $cookies.put('token', resp.headers('token'));
+                    currentUser = resp.data;
+                    $rootScope.$broadcast("login.event");
+                    deferred.resolve(currentUser);
+                }, function(resp){
+                    that.logout();
+                    deferred.reject(resp);
+                });
+                return deferred.promise;
+            },
+
+            getSecurityCode: function (email) {
+                var deferred = $q.defer();
+                var that = this;
+                $http({
+                    url:'/api/code/{' + email + '}',
+                    method:'GET'
+                }).then(function(resp){
+                    deferred.resolve(resp);
+                }, function(resp){
+                    that.logout();
+                    deferred.reject(resp);
+                });
+                return deferred.promise;
+            },
 
             /**
              * Gets all available info on authenticated user
@@ -72,9 +103,7 @@ angular.module('pintree')
              * @return {Boolean}
              */
             isLoggedIn: function () {
-                return currentUser.hasOwnProperty('roles');
             },
-
 
 
             /**
@@ -83,7 +112,6 @@ angular.module('pintree')
              * @return {Boolean}
              */
             isAdmin: function () {
-                return currentUser.roles.indexOf('admin')!=-1;
             },
 
             /**

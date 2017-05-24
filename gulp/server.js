@@ -9,7 +9,7 @@ var url=require('url')
 var tunnel = require('tunnel');
 
 /* This configuration allow you to configure browser sync to proxy your backend */
-var proxyTarget = process.env.FLEET_SERVER ||  'http://019fe897.ngrok.io'; // The location of your backend
+var proxyTarget = process.env.FLEET_SERVER ||  'http://116.62.124.82:8181'; // The location of your backend
 
 var proxyApiPrefix = '/api/'; // The element in the URL which differentiate between API request and static file request
 

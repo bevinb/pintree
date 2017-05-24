@@ -28,7 +28,7 @@ pintree.config(['$routeProvider', 'RestangularProvider', '$httpProvider', 'const
             request: function (config) {
                 config.headers = config.headers || {};
                 if ($cookies.get('token')) {
-                    config.headers.Authorization = 'Bearer ' + $cookies.get('token');
+                    config.headers.token = $cookies.get('token');
                 }
                 return config;
             },
