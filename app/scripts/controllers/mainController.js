@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$location', '$window', '$cacheFactory', '$timeout', 'alertService', 'utilService', 'ModalService', 'constants',
-    function($rootScope, $scope, $location, $window, $cacheFactory, $timeout, alertService, utilService, ModalService, constants) {
+angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$location', '$window', '$cacheFactory', '$timeout', 'Auth', 'alertService', 'utilService', 'ModalService', 'constants',
+    function($rootScope, $scope, $location, $window, $cacheFactory, $timeout, Auth, alertService, utilService, ModalService, constants) {
+
+    $scope.user = null;
 
     $scope.searchParams = {};
 
     $scope.keyword = '';
-
-    $scope.alarmsOn = false;
 
     //register keydown event to send broadcast
 
@@ -54,6 +54,10 @@ angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$loca
             }
         };
 
+        $scope.logout = function(){
+            Auth.logout();
+        };
+
 
         $timeout(function(){
             $('.quick-search-bar .wrapper').slick({
@@ -63,7 +67,12 @@ angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$loca
             });
         }, 1);
 
-
+        $rootScope.$on("login.event", function (evt) {
+            $scope.user = Auth.getCurrentUser();
+        });
+        $rootScope.$on("logout.event", function (evt) {
+            $scope.user = null;
+        });
         /*
         $(document).keydown(function(e){
             alert(222)

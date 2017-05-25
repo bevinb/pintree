@@ -32,8 +32,14 @@
                     <input class="search-input" ng-model="keyword" ng-keydown="$event.keyCode == 13 && doSearch()" placeholder="搜你喜欢的...">
                     <a class="btn-search" ng-click="doSearch()"></a>
                 </div>
-                <a class="link-signup" ng-click="showSignUpModal()">注册</a>
-                <a class="link-signin" ng-click="showLogInModal()">登录</a>
+                <span ng-if="!user">
+                    <a class="link-signup" ng-click="showSignUpModal()">注册</a>
+                    <a class="link-signin" ng-click="showLogInModal()">登录</a>
+                </span>
+                <span ng-if="user">
+                    <a class="link-signup" ng-click="logout()">注销</a>
+                    <a class="link-signup">{{user.Username}}</a>
+                </span>
             </div>
         </header>
         <div id="wrapper">

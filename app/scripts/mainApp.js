@@ -50,12 +50,7 @@ pintree.config(['$routeProvider', 'RestangularProvider', '$httpProvider', 'const
     .run(['constants', '$rootScope','$interval','$cookies', function ( constants, $rootScope, $interval,$cookies) {
 
 
-    $rootScope.$on("login.event", function (evt) {
 
-    });
-    $rootScope.$on("logout.event", function (evt) {
-
-    })
     if ($cookies.get('token')) {
         $rootScope.$broadcast("login.event");
     }

@@ -24,7 +24,7 @@ angular.module('pintree')
                     }
                 }).then(function(resp){
                     $cookies.put('token', resp.headers('token'));
-                    currentUser = resp.data;
+                    currentUser = resp.data.Data;
                     $rootScope.$broadcast("login.event");
                     deferred.resolve(currentUser);
                 }, function(resp){
@@ -55,19 +55,10 @@ angular.module('pintree')
                 $http({
                     url:'/api/sinup',
                     method:'POST',
-                    params: {
-                        Email: user.username,
-                        Password: user.password,
-                        SecurityCode: "string",
-                        Username: string
-                    }
+                    params: user
                 }).then(function(resp){
-                    $cookies.put('token', resp.headers('token'));
-                    currentUser = resp.data;
-                    $rootScope.$broadcast("login.event");
-                    deferred.resolve(currentUser);
+                    deferred.resolve(resp);
                 }, function(resp){
-                    that.logout();
                     deferred.reject(resp);
                 });
                 return deferred.promise;
@@ -77,12 +68,11 @@ angular.module('pintree')
                 var deferred = $q.defer();
                 var that = this;
                 $http({
-                    url:'/api/code/{' + email + '}',
+                    url:'/api/sinup/code/' + email,
                     method:'GET'
                 }).then(function(resp){
                     deferred.resolve(resp);
                 }, function(resp){
-                    that.logout();
                     deferred.reject(resp);
                 });
                 return deferred.promise;
