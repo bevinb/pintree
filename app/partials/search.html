@@ -1,8 +1,8 @@
 <div masonry reload-on-show reload-on-resize ng-class="{'download': mode=='download'}">
-    <div class="tree-item masonry-brick" ng-repeat="brick in bricks">
+    <div class="tree-item masonry-brick" ng-repeat="brick in vegetations">
         <div class="thumbnail" ng-class="{'checked': brick.isChecked}" ng-click="toggleSelection(brick)">
             <div class="project-cover">
-                <img ng-src="{{ brick.src }}" alt="">
+                <img ng-src="{{ brick.MainPictureURL }}" alt="">
                 <div class="cover-mask">
                     <p>中文名：榉树</p>
                     <p>拉丁名：Zelkova serrata</p>
@@ -12,14 +12,14 @@
                     <i class="btn-check"></i>
                 </div>
             </div>
-            <div class="item-info">图片名称太长怎么办，换两行呗，一行限制字数。恩～就这么办</div>
+            <div class="item-info">{{ brick.Names.ChineseName }}</div>
         </div>
         <div class="user-info">
             <div class="media clearfix">
                 <a href="" class="media-object pull-left">
-                    <img class="img avatar" src="/images/avatar.png">
+                    <img class="img avatar" ng-src="{{brick.Uploader.PortraitURL}}">
                 </a>
-                <a href="" class="media-body">Author name</a>
+                <a href="" class="media-body">{{brick.Uploader.Name}}</a>
             </div>
         </div>
     </div>

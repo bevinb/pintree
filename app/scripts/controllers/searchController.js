@@ -8,6 +8,8 @@ angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$ro
 
     $scope.mode = 'view';
 
+    $scope.vegetations = [];
+
     $scope.selections = [];
 
     $scope.changeMode = function(mode){
@@ -68,7 +70,9 @@ angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$ro
             genBrick(),
             genBrick()
         ];
-        vegetationService.getAll();
+        vegetationService.getAll($scope.searchParams, function(resp){
+            $scope.vegetations = resp.Data;
+        });
      });
 
      function genBrick() {
