@@ -1,5 +1,5 @@
-angular.module('pintree').directive('detailModalViewer', ['$compile', 'utilService',
-    function ($compile, utilService) {
+angular.module('pintree').directive('detailModalViewer', ['$compile', 'utilService', 'vegetationService',
+    function ($compile, utilService, vegetationService) {
     return  {
         restrict: 'EAC',
         replace: false,
@@ -56,6 +56,9 @@ angular.module('pintree').directive('detailModalViewer', ['$compile', 'utilServi
                         scope.relatedTrees = genBricks();
                     //}, true);
 
+                    vegetationService.getById(value.id, function(tree){
+                        $.currentTree = tree
+                    });
 
                 },
 

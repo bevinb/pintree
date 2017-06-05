@@ -30,20 +30,20 @@
                     </div>
                 </div>
                 <div class="main-image">
-                    <div id="baidu_image_holder" class="image-holder">
-                        <a href="" target="_blank" data-real-href="http://mikaelsplayground.tumblr.com/post/83790238520/fotografiae-two-by-saelanwangsa">
-                            <img ng-src="{{value.src}}" alt="" ng-click="zoomIn()">
+                    <div class="image-holder">
+                        <a href="" target="_blank">
+                            <img ng-src="{{currentTree.Pictures[0].URL}}" alt="" ng-click="zoomIn()">
                         </a>
                     </div>
                 </div>
                 <div class="tool-bar-bottom clearfix">
                     <div class="user-info">
                         <div class="media clearfix">
-                            <a href="/users/36ZFMLPBWQJV" class="media-object pull-left">
-                                <img class="img avatar" src="/images/avatar.png">
+                            <a href="/users/{{currentTree.Uploader.UserId}}" class="media-object pull-left">
+                                <img class="img avatar" ng-src="{{currentTree.Uploader.PortraitURL}}">
                             </a>
-                            <a href="/users/36ZFMLPBWQJV" class="media-body">
-                                Jagdip Singh
+                            <a href="/users/{{currentTree.Uploader.UserId}}" class="media-body">
+                                {{currentTree.Uploader.Name}}
                             </a>
                         </div>
                     </div>
@@ -51,16 +51,16 @@
                 </div>
                 <div class="extra-box">
                     详情描述
-                    <p>中文名：榉树</p>
-                    <p>拉丁名：Zelkova serrata</p>
-                    <p>别名：榉木、红鸡油、 …</p>
-                    <p>界：植物界 Plantae</p>
-                    <p>门：被子植物门 Magnoliophyta</p>
-                    <p>纲：双子叶植物纲 Magnoliopsida（未分级）I类真蔷薇分支 eurosids I</p>
-                    <p>目：蔷薇目 Rosales</p>
-                    <p>科：榆科 Ulmaceae</p>
-                    <p>属：榉属 Zelkova</p>
-                    <p>种：榉树 Z. serrata</p>
+                    <p>中文名：{{currentTree.Base.Names.ChineseName}}</p>
+                    <p>拉丁名：{{currentTree.Base.Names.LatinName}}</p>
+                    <p>别名：{{currentTree.Base.Names.Alias}}</p>
+                    <p>界：{{currentTree.Base.PlantKingdom}}</p>
+                    <p>门：{{currentTree.Base.Phylum}}</p>
+                    <p>纲：{{currentTree.Base.Classes}}</p>
+                    <p>目：{{currentTree.Base.Order}}</p>
+                    <p>科：{{currentTree.Base.Family}}</p>
+                    <p>属：{{currentTree.Base.Genus}}</p>
+                    <p>种：{{currentTree.Base.Species}}</p>
                 </div>
             </div>
             <div class="info-piece piece">
@@ -71,26 +71,23 @@
                         <div class="title-el">你可能还感兴趣的...</div>
                         <div class="board-box clearfix">
                             <div masonry reload-on-show load-images="true" style="width:1000px;">
-                                <div class="tree-item masonry-brick" ng-repeat="brick in relatedTrees">
+                                <div class="tree-item masonry-brick" ng-repeat="brick in currentTree.Similars">
                                     <div class="thumbnail">
-                                        <div class="project-cover" project_title="Ellersielie Apartment Building " project-id="7368" project-link="/projects/7368/ellersielie-apartment-building?searched=">
-                                            <img ng-src="{{ brick.src }}" alt="A masonry brick">
+                                        <div class="project-cover">
+                                            <img ng-src="{{ brick.MainPictureURL }}" alt="A masonry brick">
                                             <div class="cover-mask">
-                                                <p>中文名：榉树</p>
-                                                <p>拉丁名：Zelkova serrata</p>
-                                                <p>别名：榉木、红鸡油、 …</p>
-                                                <p>界：植物界 Plantae</p>
+                                                <p>中文名：{{brick.Names.ChineseName}}</p>
                                                 <i class="btn-like liked"></i>
                                             </div>
                                         </div>
-                                        <div class="item-info">图片名称太长怎么办，换两行呗，一行限制字数。恩～就这么办</div>
+                                        <div class="item-info">{{brick.Names.ChineseName}}</div>
                                     </div>
                                     <div class="user-info">
-                                        <div class="media clearfix" author_name="Jagdip Singh" onclick="gaSendEvent('Navi', 'TileView on Search', this.getAttribute('author_name'))">
+                                        <div class="media clearfix">
                                             <a href="#" class="media-object pull-left">
-                                                <img class="img avatar" src="/images/avatar.png">
+                                                <img class="img avatar" ng-src="{{ brick.Uploader.PortraitURL }}">
                                             </a>
-                                            <a href="#" class="media-body">Author name</a>
+                                            <a href="#" class="media-body">{{ brick.Uploader.Name }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -102,13 +99,13 @@
         </div>
         <div class="side-part">
             <div class="board-piece piece">
-                <h2>榉树<span>Zelkova serrata</span></h2>
+                <h2>{{currentTree.Base.Names.ChineseName}}<span>{{currentTree.Base.Names.LatinName}}</span></h2>
                 <div class="divider"></div>
                 <div class="props">
                     <div class="prop-row"><span class="title" style="width:42px;">树形</span><i class="icon-leaf"></i></div>
-                    <div class="prop-row"><span class="title">质感</span><span class="content">细腻</span></div>
+                    <div class="prop-row"><span class="title">质感</span><span class="content">{{currentTree.Base.SkinTexture}}</span></div>
                     <div class="prop-row"><span class="title">观赏性</span><i class="icon-flower"></i></div>
-                    <div class="prop-row"><span class="title">种类</span><span class="content">大乔木</span></div>
+                    <div class="prop-row"><span class="title">种类</span><span class="content">{{currentTree.Base.PlantType}}</span></div>
                 </div>
                 <div class="divider"></div>
                 <div class="other-props">
@@ -143,7 +140,7 @@
 
 <div class="zoom-layer" ng-show="zoomed">
     <div class="holder">
-        <img ng-src="{{value.src}}">
+        <img ng-src="{{currentTree.Pictures[0].URL}}">
     </div>
     <div class="close-zoom" ng-click="zoomOut()"></div>
 </div>

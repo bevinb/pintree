@@ -4,10 +4,10 @@
             <div class="project-cover">
                 <img ng-src="{{ brick.MainPictureURL }}" alt="">
                 <div class="cover-mask">
-                    <p>中文名：榉树</p>
-                    <p>拉丁名：Zelkova serrata</p>
-                    <p>别名：榉木、红鸡油、 …</p>
-                    <p>界：植物界 Plantae</p>
+                    <p>中文名：{{brick.Names.ChineseName}}</p>
+                    <p>拉丁名：{{brick.Names.LatinName}}</p>
+                    <p>别名：{{brick.Names.Alias}}</p>
+                    <!--<p>界：{{brick.Names.ChineseName}}</p>-->
                     <i class="btn-like liked"></i>
                     <i class="btn-check"></i>
                 </div>
