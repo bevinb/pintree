@@ -54,18 +54,18 @@
                     <p>中文名：{{currentTree.Base.Names.ChineseName}}</p>
                     <p>拉丁名：{{currentTree.Base.Names.LatinName}}</p>
                     <p>别名：{{currentTree.Base.Names.Alias}}</p>
-                    <p>界：{{currentTree.Base.PlantKingdom}}</p>
-                    <p>门：{{currentTree.Base.Phylum}}</p>
-                    <p>纲：{{currentTree.Base.Classes}}</p>
-                    <p>目：{{currentTree.Base.Order}}</p>
-                    <p>科：{{currentTree.Base.Family}}</p>
-                    <p>属：{{currentTree.Base.Genus}}</p>
-                    <p>种：{{currentTree.Base.Species}}</p>
+                    <p>界：{{currentTree.Base.PlantKingdom.Cn}} {{currentTree.Base.PlantKingdom.En}}</p>
+                    <p>门：{{currentTree.Base.Phylum.Cn}} {{currentTree.Base.Phylum.En}}</p>
+                    <p>纲：{{currentTree.Base.Classes.Cn}} {{currentTree.Base.Classes.En}}</p>
+                    <p>目：{{currentTree.Base.Order.Cn}} {{currentTree.Base.Order.En}}</p>
+                    <p>科：{{currentTree.Base.Family.Cn}} {{currentTree.Base.Family.En}}</p>
+                    <p>属：{{currentTree.Base.Genus.Cn}} {{currentTree.Base.Genus.En}}</p>
+                    <p>种：{{currentTree.Base.Species.Cn}} {{currentTree.Base.Species.En}}</p>
                 </div>
             </div>
             <div class="info-piece piece">
             </div>
-            <div class="bottom-part">
+            <div class="bottom-part" ng-show="currentTree.Similars.length > 0">
                 <div class="pin-view-wrapper">
                     <div class="related-boards clearfix" style="display: block;">
                         <div class="title-el">你可能还感兴趣的...</div>

@@ -20,6 +20,7 @@ angular.module('pintree').directive('advancedSearchFilter', ['$compile', 'utilSe
                     };
                     scope.ok = function(v, k){
                         scope.showAdvanced = false;
+                        scope.$emit("search", {params: {}});
                     };
                     scope.cancel = function(){
                         scope.showAdvanced = false;

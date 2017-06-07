@@ -1,13 +1,15 @@
 'use strict';
 
-angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$location', '$window', '$cacheFactory', '$timeout', 'Auth', 'alertService', 'utilService', 'ModalService', 'constants',
-    function($rootScope, $scope, $location, $window, $cacheFactory, $timeout, Auth, alertService, utilService, ModalService, constants) {
+angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$location', '$window', '$cacheFactory', '$timeout', 'Auth', 'vegetationService', 'alertService', 'utilService', 'ModalService', 'constants',
+    function($rootScope, $scope, $location, $window, $cacheFactory, $timeout, Auth, vegetationService, alertService, utilService, ModalService, constants) {
 
     $scope.user = null;
 
     $scope.searchParams = {};
 
     $scope.keyword = '';
+
+    $scope.hottestKeywords = [];
 
     //register keydown event to send broadcast
 
@@ -73,6 +75,13 @@ angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$loca
         $rootScope.$on("logout.event", function (evt) {
             $scope.user = null;
         });
+
+
+        (function(){
+            vegetationService.getHottestKeywords(20, function(resp){
+                $scope.hottestKeywords = resp.Data;
+            });
+        })();
         /*
         $(document).keydown(function(e){
             alert(222)

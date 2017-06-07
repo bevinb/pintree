@@ -28,44 +28,21 @@ angular.module('pintree').directive('detailModalViewer', ['$compile', 'utilServi
                     scope.zoomOut = function(v, k){
                         scope.zoomed = false;
                     };
-
-                    function genBrick() {
-                        var height = ~~(Math.random() * 500) + 100;
-                        var id = ~~(Math.random() * 10000);
-                        return {
-                            src: 'http://lorempixel.com/g/280/' + height + '/?' + id
-                        };
-                    };
-
-                    function genBricks() {
-                        return [
-                            genBrick(),
-                            genBrick(),
-                            genBrick(),
-                            genBrick(),
-                            genBrick(),
-                            genBrick(),
-                            genBrick(),
-                            genBrick(),
-                            genBrick(),
-                            genBrick()
-                        ];
-                    };
-
-                    //scope.$watch('value', function(){
-                        scope.relatedTrees = genBricks();
-                    //}, true);
-
-                    vegetationService.getById(value.id, function(tree){
-                        $.currentTree = tree
-                    });
-
                 },
 
                 post: function(scope, element, iAttrs, controller) {
 
                 }
             }
+        },
+        controller: function($scope){
+            $scope.$watch('value', function(v){
+                if(!v)return;
+                //$scope.relatedTrees = genBricks();
+                vegetationService.getById(v.Id, function(resp){
+                    $scope.currentTree = resp.Data;
+                });
+            });
         }
     };
 }]);

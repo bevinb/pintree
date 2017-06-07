@@ -55,49 +55,14 @@ angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$ro
 
 
     $scope.$on("search", function (event, data) {
-        //alert(data.params)
-        $scope.bricks = [
-            genBrick(),
-            genBrick(),
-            genBrick(),
-            genBrick(),
-            genBrick(),
-            genBrick(),
-            genBrick(),
-            genBrick(),
-            genBrick(),
-            genBrick(),
-            genBrick(),
-            genBrick()
-        ];
-        vegetationService.getAll($scope.searchParams, function(resp){
+        /*vegetationService.getAll($scope.searchParams, function(resp){
+            $scope.vegetations = resp.Data;
+        });
+        */
+        vegetationService.simpleSearch($scope.searchParams, function(resp){
             $scope.vegetations = resp.Data;
         });
      });
-
-     function genBrick() {
-        var height = ~~(Math.random() * 500) + 100;
-        var id = ~~(Math.random() * 10000);
-        return {
-            src: 'http://lorempixel.com/g/280/' + height + '/?' + id
-        };
-    };
-
-    $scope.bricks = [
-        genBrick(),
-        genBrick(),
-        genBrick(),
-        genBrick(),
-        genBrick(),
-        genBrick(),
-        genBrick(),
-        genBrick(),
-        genBrick(),
-        genBrick(),
-        genBrick(),
-        genBrick()
-    ];
-
 
     (function(){
 

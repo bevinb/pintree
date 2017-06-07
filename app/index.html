@@ -45,19 +45,7 @@
         <div id="wrapper">
             <div class="quick-search-bar" ng-show="!searchParams.keyword" ng-click="setKeyword($event.target)">
                 <div class="wrapper">
-                    <a class="search-tag" search-link="展开形">展开形</a>
-                    <a class="search-tag" search-link="华南区">华南区</a>
-                    <a class="search-tag" search-link="大乔">大乔</a>
-                    <a class="search-tag" search-link="行道树">行道树</a>
-                    <a class="search-tag" search-link="速生">速生</a>
-                    <a class="search-tag" search-link="开花">开花</a>
-                    <a class="search-tag" search-link="针叶">针叶</a>
-                    <a class="search-tag" search-link="圆球形">圆球形</a>
-                    <a class="search-tag" search-link="圆球形">圆球形</a>
-                    <a class="search-tag" search-link="圆球形">圆球形</a>
-                    <a class="search-tag" search-link="圆球形">圆球形</a>
-                    <a class="search-tag" search-link="圆球形">圆球形</a>
-                    <a class="search-tag" search-link="圆球形">圆球形</a>
+                    <a class="search-tag" search-link="{{k.Word}}" ng-repeat="k in vegetations">{{k.Word}}</a>
                 </div>
             </div>
 
