@@ -14,8 +14,15 @@ angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$loca
     //register keydown event to send broadcast
 
     $scope.doSearch = function(){
+
         //$scope.$apply(function(){
             $scope.searchParams.keyword = $scope.keyword;
+        //});
+        $scope.$broadcast("search", {params: $scope.searchParams});
+    };
+
+    $scope.doAdvancedSearch = function(params){
+        $scope.searchParams = params;
         //});
         $scope.$broadcast("search", {params: $scope.searchParams});
     };

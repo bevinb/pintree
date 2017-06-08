@@ -59,9 +59,15 @@ angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$ro
             $scope.vegetations = resp.Data;
         });
         */
-        vegetationService.simpleSearch($scope.searchParams, function(resp){
-            $scope.vegetations = resp.Data;
-        });
+        if(data.params.keyword) {
+            vegetationService.simpleSearch(data.params, function (resp) {
+                $scope.vegetations = resp.Data;
+            });
+        } else {
+            vegetationService.getAll(data, function (resp) {
+                $scope.vegetations = resp.Data;
+            });
+        }
      });
 
     (function(){

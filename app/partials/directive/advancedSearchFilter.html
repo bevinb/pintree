@@ -1,14 +1,8 @@
 <div class="search-row">
     <div class="title">类别</div>
     <div class="keyword-list">
-        <span class="keyword" name="PlantType">全部</span>
-        <span class="keyword" name="PlantType">乔木</span>
-        <span class="keyword" name="PlantType">花卉（一、二年生及宿根）</span>
-        <span class="keyword" name="PlantType">棕榈类</span>
-        <span class="keyword" name="PlantType">灌木</span>
-        <span class="keyword" name="PlantType">地被</span>
-        <span class="keyword" name="PlantType">爬藤</span>
-        <span class="keyword" name="PlantType">观赏草及竹类</span>
+        <span class="keyword" name="PlantType" ng-class="{selected: params.PlantType && params.PlantType.indexOf(opt)>-1}"
+              ng-click="togglePlantType(opt)" ng-repeat="opt in plantTypeOpts">{{opt}}</span>
     </div>
     <a class="toggle-advance" ng-click="toggleStatus()">高级筛选</a>
 </div>
@@ -17,120 +11,115 @@
     <div class="search-row">
         <div class="title">气候带</div>
         <div class="option-list">
-            <span class="option"><label><input type="checkbox" name="ClimaticZone" value="1" >寒温带</label></span>
-            <span class="option"><label><input type="checkbox" name="ClimaticZone" value="1" >中温带</label></span>
-            <span class="option"><label><input type="checkbox" name="ClimaticZone" value="1" >暖温带</label></span>
-            <span class="option"><label><input type="checkbox" name="ClimaticZone" value="1" >北亚热带</label></span>
-            <span class="option"><label><input type="checkbox" name="ClimaticZone" value="1" >中亚热带</label></span>
-            <span class="option"><label><input type="checkbox" name="ClimaticZone" value="1" >南亚热带</label></span>
-            <span class="option"><label><input type="checkbox" name="ClimaticZone" value="1" >边缘热带</label></span>
-            <span class="option"><label><input type="checkbox" name="ClimaticZone" value="1" >中热带</label></span>
-            <span class="option"><label><input type="checkbox" name="ClimaticZone" value="1" >高原寒带</label></span>
-            <span class="option"><label><input type="checkbox" name="ClimaticZone" value="1" >高原温带</label></span>
+            <span class="option" ng-repeat="opt in climaticZoneOpts">
+                <label>
+                    <input type="checkbox" name="ClimaticZone" value="{{opt}}" ng-checked="params.ClimaticZone && params.ClimaticZone.indexOf(opt)>-1" ng-click="toggleClimaticZone(opt)" >{{opt}}
+                </label>
+            </span>
         </div>
     </div>
     <div class="divider"></div>
     <div class="search-row">
         <div class="title">体量</div>
         <div class="option-list">
-            <span class="option"><label><input type="checkbox" name="Mass" value="1" >大</label></span>
-            <span class="option"><label><input type="checkbox" name="Mass" value="1" >中</label></span>
-            <span class="option"><label><input type="checkbox" name="Mass" value="1" >小</label></span>
-        </div>
-    </div>
-    <div class="divider"></div>
-    <div class="search-row">
-        <div class="title">气候带</div>
-        <div class="option-list">
-            <span class="option"><label><input type="checkbox" name="Evergreen" value="1" >常绿</label></span>
-            <span class="option"><label><input type="checkbox" name="Evergreen" value="1" >落叶</label></span>
-            <span class="option"><label><input type="checkbox" name="Evergreen" value="1" >半落叶</label></span>
+            <span class="option" ng-repeat="opt in massOpts">
+                <label>
+                    <input type="checkbox" name="Mass" value="{{opt}}" ng-checked="params.Mass && params.Mass.indexOf(opt)>-1" ng-click="toggleMass(opt)">{{opt}}
+                </label>
+            </span>
         </div>
     </div>
     <div class="divider"></div>
     <div class="search-row">
         <div class="title">常绿</div>
         <div class="option-list">
-            <span class="option"><label><input type="checkbox" name="Evergreen" value="1" >常绿</label></span>
-            <span class="option"><label><input type="checkbox" name="Evergreen" value="1" >落叶</label></span>
-            <span class="option"><label><input type="checkbox" name="Evergreen" value="1" >半落叶</label></span>
+            <span class="option" ng-repeat="opt in evergreenOpts">
+                <label>
+                    <input type="checkbox" name="Evergreen" value="{{opt}}" ng-checked="params.Evergreen && params.Evergreen.indexOf(opt)>-1" ng-click="toggleEvergreen(opt)">{{opt}}
+                </label>
+            </span>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="search-row">
+        <div class="title">树形</div>
+        <div class="option-list">
+            <span class="option" ng-repeat="opt in treeFormOpts">
+                <label>
+                    <input type="checkbox" name="TreeForm" value="{{opt}}" ng-checked="params.TreeForm && params.TreeForm.indexOf(opt)>-1" ng-click="toggleTreeForm(opt)">{{opt}}
+                </label>
+            </span>
         </div>
     </div>
     <div class="divider"></div>
     <div class="search-row">
         <div class="title">肌理</div>
         <div class="option-list">
-            <span class="option"><label><input type="checkbox" name="SkinTexture" value="1" >中等</label></span>
-            <span class="option"><label><input type="checkbox" name="SkinTexture" value="1" >粗糙</label></span>
-            <span class="option"><label><input type="checkbox" name="SkinTexture" value="1" >细腻</label></span>
+            <span class="option" ng-repeat="opt in skinTextureOpts">
+                <label>
+                    <input type="checkbox" name="SkinTexture" value="{{opt}}" ng-checked="params.SkinTexture && params.SkinTexture.indexOf(opt)>-1" ng-click="toggleSkinTexture(opt)">{{opt}}
+                </label>
+            </span>
         </div>
     </div>
     <div class="divider"></div>
     <div class="search-row">
         <div class="title">线条</div>
         <div class="option-list">
-            <span class="option"><label><input type="checkbox" name="Linellae" value="1" >直线</label></span>
-            <span class="option"><label><input type="checkbox" name="Linellae" value="1" >弯曲</label></span>
-            <span class="option"><label><input type="checkbox" name="Linellae" value="1" >下垂</label></span>
+            <span class="option" ng-repeat="opt in linellaeOpts">
+                <label>
+                    <input type="checkbox" name="Linellae" value="{{opt}}" ng-checked="params.Linellae && params.Linellae.indexOf(opt)>-1" ng-click="toggleLinellae(opt)">{{opt}}
+                </label>
+            </span>
         </div>
     </div>
     <div class="divider"></div>
     <div class="search-row">
         <div class="title">主观赏性</div>
         <div class="option-list">
-            <span class="option"><label><input type="checkbox" name="MainOrnamental" value="1" >观花</label></span>
-            <span class="option"><label><input type="checkbox" name="MainOrnamental" value="1" >观叶</label></span>
-            <span class="option"><label><input type="checkbox" name="MainOrnamental" value="1" >观枝</label></span>
+            <span class="option" ng-repeat="opt in mainOrnamentalOpts">
+                <label>
+                    <input type="checkbox" name="MainOrnamental" value="{{opt}}" ng-checked="params.MainOrnamental && params.MainOrnamental.indexOf(opt)>-1" ng-click="toggleMainOrnamental(opt)">{{opt}}
+                </label>
+            </span>
         </div>
     </div>
     <div class="divider"></div>
     <div class="search-row">
         <div class="title">叶色</div>
         <div class="option-list">
-            <span class="color-select checked" name="LeafColor" style="background-color: rgb(102, 204, 153);"></span>
-            <span class="color-select" name="LeafColor" style="background-color: rgb(204, 153, 0);"></span>
-            <span class="color-select" name="LeafColor" style="background-color: rgb(102, 153, 51);"></span>
-            <span class="color-select" name="LeafColor" style="background-color: rgb(0, 102, 0);"></span>
-            <span class="color-select" name="LeafColor" style="background-color: rgb(153, 51, 0);"></span>
-            <span class="color-select" name="LeafColor" style="background-color: rgb(255, 153, 0);"></span>
-            <span class="color-select" name="LeafColor" style="background-color: rgb(204, 153, 0);"></span>
-            <span class="color-select" name="LeafColor" style="background-color: rgb(0, 153, 204);"></span>
+            <span class="color-select" name="LeafColor" ng-repeat="opt in leafColorOpts" ng-class="{checked: params.LeafColor && params.LeafColor.indexOf(opt.k)>-1}"
+                  ng-click="toggleLeafColor(opt.k)" style="background-color: {{opt.v}};"></span>
         </div>
     </div>
     <div class="divider"></div>
     <div class="search-row">
         <div class="title">花色</div>
         <div class="option-list">
-            <span class="color-select checked" name="FlowerColor" style="background-color: rgb(102, 204, 153);"></span>
-            <span class="color-select" name="FlowerColor" style="background-color: rgb(204, 153, 0);"></span>
-            <span class="color-select" name="FlowerColor" style="background-color: rgb(102, 153, 51);"></span>
-            <span class="color-select" name="FlowerColor" style="background-color: rgb(0, 102, 0);"></span>
-            <span class="color-select" name="FlowerColor" style="background-color: rgb(153, 51, 0);"></span>
-            <span class="color-select" name="FlowerColor" style="background-color: rgb(255, 153, 0);"></span>
-            <span class="color-select" name="FlowerColor" style="background-color: rgb(204, 153, 0);"></span>
-            <span class="color-select" name="FlowerColor" style="background-color: rgb(0, 153, 204);"></span>
+            <span class="color-select" name="FlowerColor" ng-repeat="opt in flowerColorOpts" ng-class="{checked: params.FlowerColor && params.FlowerColor.indexOf(opt.k)>-1}"
+                  ng-click="toggleFlowerColor(opt.k)" style="background-color: {{opt.v}};"></span>
         </div>
     </div>
     <div class="divider"></div>
     <div class="search-row">
         <div class="title">花期</div>
         <div class="option-list">
-            <span class="option"><label><input type="checkbox" name="Florescence" value="1" >1</label></span>
-            <span class="option"><label><input type="checkbox" name="Florescence" value="2" >2</label></span>
-            <span class="option"><label><input type="checkbox" name="Florescence" value="3" >3</label></span>
-            <span class="option"><label><input type="checkbox" name="Florescence" value="4" >4</label></span>
-            <span class="option"><label><input type="checkbox" name="Florescence" value="5" >5</label></span>
-            <span class="option"><label><input type="checkbox" name="Florescence" value="6" >6</label></span>
+            <span class="option" ng-repeat="opt in florescenceOpts">
+                <label>
+                    <input type="checkbox" name="Florescence" value="{{opt}}" ng-checked="params.Florescence && params.Florescence.indexOf(opt)>-1" ng-click="toggleFlorescence(opt)">{{opt}}
+                </label>
+            </span>
         </div>
     </div>
     <div class="divider"></div>
     <div class="search-row">
         <div class="title">喜光性</div>
         <div class="option-list">
-            <span class="option"><label><input type="checkbox" name="LightingCondition" value="1" >全日照</label></span>
-            <span class="option"><label><input type="checkbox" name="LightingCondition" value="2" >半日照</label></span>
-            <span class="option"><label><input type="checkbox" name="LightingCondition" value="3" >阴影</label></span>
-            <span class="option"><label><input type="checkbox" name="LightingCondition" value="4" >任意</label></span>
+            <span class="option" ng-repeat="opt in lightingConditionOpts">
+                <label>
+                    <input type="checkbox" name="LightingCondition" value="{{opt}}" ng-checked="params.LightingCondition && params.LightingCondition.indexOf(opt)>-1" ng-click="toggleLightingCondition(opt)">{{opt}}
+                </label>
+            </span>
         </div>
     </div>
     <div class="divider"></div>

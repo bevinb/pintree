@@ -51,7 +51,7 @@
 
             <div class="search-bar-wrapper" ng-show="!!searchParams.keyword">
                 <div class="wrapper">
-                    <advanced-search-filter ng-model="searchParams"></advanced-search-filter>
+                    <advanced-search-filter on-submit="doAdvancedSearch(params)"></advanced-search-filter>
                 </div>
             </div>
             <div id="mainNav">
