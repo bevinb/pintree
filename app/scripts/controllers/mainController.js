@@ -77,7 +77,11 @@ angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$loca
         }, 1);
 
         $rootScope.$on("login.event", function (evt) {
+            alert(33)
             $scope.user = Auth.getCurrentUser();
+            vegetationService.getHottestKeywords(20, function(resp){
+                $scope.hottestKeywords = resp.Data;
+            });
         });
         $rootScope.$on("logout.event", function (evt) {
             $scope.user = null;
@@ -85,9 +89,7 @@ angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$loca
 
 
         (function(){
-            vegetationService.getHottestKeywords(20, function(resp){
-                $scope.hottestKeywords = resp.Data;
-            });
+
         })();
         /*
         $(document).keydown(function(e){

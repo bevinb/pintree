@@ -5,10 +5,12 @@ angular.module('pintree')
         function Auth($location, $rootScope, Restangular, User, $cookies,$q, $http) {
         var currentUser = {};
         if ($cookies.get('token')) {
-            User.get()
-                .then(function(user){
-                    currentUser = user;
-                });
+            User.get().then(function(resp){
+                currentUser = resp.Data;
+                $rootScope.$broadcast("login.event");
+            });
+        } else {
+            $('header .link-signin').click();
         }
 
         return {

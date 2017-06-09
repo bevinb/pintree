@@ -51,8 +51,6 @@ pintree.config(['$routeProvider', 'RestangularProvider', '$httpProvider', 'const
 
 
 
-    if ($cookies.get('token')) {
-        $rootScope.$broadcast("login.event");
-    }
+
 
 }]);
