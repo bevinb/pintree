@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('pintree')
-    .factory('Auth',['$location', '$rootScope', 'Restangular', 'User', '$cookies','$q', '$http',
-        function Auth($location, $rootScope, Restangular, User, $cookies,$q, $http) {
+    .factory('Auth',['$location', '$rootScope', 'Restangular', 'User', '$cookies','$q', '$http','$timeout',
+        function Auth($location, $rootScope, Restangular, User, $cookies,$q, $http, $timeout) {
         var currentUser = {};
         if ($cookies.get('token')) {
             User.get().then(function(resp){
@@ -10,7 +10,7 @@ angular.module('pintree')
                 $rootScope.$broadcast("login.event");
             });
         } else {
-            $('header .link-signin').click();
+            $timeout(function(){$rootScope.$broadcast("logout.event");});
         }
 
         return {
