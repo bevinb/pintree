@@ -1,8 +1,6 @@
-'use strict';
-
 angular.module('pintree').controller('MainCtrl', ['$rootScope', '$scope', '$location', '$window', '$cacheFactory', '$timeout', 'Auth', 'vegetationService', 'alertService', 'utilService', 'ModalService', 'constants',
-    function($rootScope, $scope, $location, $window, $cacheFactory, $timeout, Auth, vegetationService, alertService, utilService, ModalService, constants) {
-
+function($rootScope, $scope, $location, $window, $cacheFactory, $timeout, Auth, vegetationService, alertService, utilService, ModalService, constants) {
+    'use strict';
     $scope.user = null;
 
     $scope.searchParams = {};

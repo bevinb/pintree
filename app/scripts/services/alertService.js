@@ -1,6 +1,5 @@
-'use strict';
-
 angular.module('pintree').factory('alertService', function($rootScope, $timeout) {
+    'use strict';
     var alertService = {};
     var timer = null;
     var duration = 10000; //default display time

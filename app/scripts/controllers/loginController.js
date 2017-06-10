@@ -13,7 +13,7 @@ angular.module('pintree').controller('LoginCtrl', ['$scope', '$window', 'Auth', 
                 msg: '登录失败, 账号或密码错误！',
                 type: "danger"
             });
-        })
+        });
     };
 
     $scope.dismissModal = function(result) {

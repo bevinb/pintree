@@ -1,8 +1,6 @@
-'use strict';
-
-angular.module('pintree')
-    .factory('Auth',['$location', '$rootScope', 'Restangular', 'User', '$cookies','$q', '$http','$timeout',
-        function Auth($location, $rootScope, Restangular, User, $cookies,$q, $http, $timeout) {
+angular.module('pintree').factory('Auth',['$location', '$rootScope', 'Restangular', 'User', '$cookies','$q', '$http','$timeout',
+    function Auth($location, $rootScope, Restangular, User, $cookies,$q, $http, $timeout) {
+        'use strict';
         var currentUser = {};
         if ($cookies.get('token')) {
             User.get().then(function(resp){

@@ -18,7 +18,7 @@ angular.module('pintree').directive('signInLink', ['$compile', 'utilService',
                 post: function(scope, element, iAttrs, controller) {
 
                 }
-            }
+            };
         }
     };
 }]);

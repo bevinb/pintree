@@ -194,7 +194,7 @@
                 post: function(scope, element, iAttrs, controller) {
 
                 }
-            }
+            };
         }
     };
 }]);

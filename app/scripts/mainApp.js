@@ -1,4 +1,3 @@
-'use strict';
 var pintree = angular.module('pintree', ['wu.masonry', 'ngRoute', 'ngCookies', 'restangular', 'ui.bootstrap', 'ngSanitize',
     'angular-loading-bar','angularMoment', 'angularModalService', 'infinite-scroll']);
 

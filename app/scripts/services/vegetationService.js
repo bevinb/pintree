@@ -1,11 +1,6 @@
-/*
- * Services
- */
-'use strict';
-
 angular.module('pintree').factory('vegetationService', ['Restangular', 'constants','$cookies',
-    function(Restangular, constants, $cookies) {
-
+function(Restangular, constants, $cookies) {
+    'use strict';
     return {
         simpleSearch: function (params, cb) {
             Restangular.all('vegetation/simple_search').customPOST(params).then(cb);
@@ -30,5 +25,5 @@ angular.module('pintree').factory('vegetationService', ['Restangular', 'constant
 
             }).then(cb);
         },
-    }
+    };
 }]);

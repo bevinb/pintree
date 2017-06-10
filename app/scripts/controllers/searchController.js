@@ -1,8 +1,6 @@
-'use strict';
-
 angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$routeParams', '$timeout', 'utilService', 'constants', 'vegetationService',
 function($rootScope, $scope, $routeParams, $timeout, utilService, constants, vegetationService) {
-
+    'use strict';
     $scope.pageSize = 20;
     $scope.startIndex = 0;
     $scope.searchParams = {};

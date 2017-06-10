@@ -1,6 +1,5 @@
-'use strict';
-
 angular.module('pintree').filter('simpleFilter', function() {
+    'use strict';
     return function(input) {
         try {
             //console.log('utcToDate :::::: input: ' + input);

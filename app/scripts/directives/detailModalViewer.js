@@ -33,7 +33,7 @@ angular.module('pintree').directive('detailModalViewer', ['$compile', 'utilServi
                 post: function(scope, element, iAttrs, controller) {
 
                 }
-            }
+            };
         },
         controller: function($scope){
             $scope.$watch('value', function(v){

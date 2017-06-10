@@ -12,7 +12,7 @@ angular.module('pintree').controller('SignUpCtrl', ['$scope', '$window', 'Auth',
             });
         }).catch(function (err) {
             console.log(err);
-        })
+        });
     };
 
     $scope.signup = function () {
@@ -28,7 +28,7 @@ angular.module('pintree').controller('SignUpCtrl', ['$scope', '$window', 'Auth',
                 msg: err.msg,
                 type: "danger"
             });
-        })
+        });
     };
 
     $scope.dismissModal = function(result) {
