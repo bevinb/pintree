@@ -1,4 +1,5 @@
-<div masonry reload-on-show reload-on-resize ng-class="{'download': mode=='download'}">
+<div masonry reload-on-show reload-on-resize load-images="false" ng-class="{'download': mode=='download'}" infinite-scroll='doSearch()'
+     infinite-scroll-disabled='mode == "download" || loading'>
     <div class="tree-item masonry-brick" ng-repeat="brick in vegetations">
         <div class="thumbnail" ng-class="{'checked': brick.isChecked}" ng-click="toggleSelection(brick)">
             <div class="project-cover">

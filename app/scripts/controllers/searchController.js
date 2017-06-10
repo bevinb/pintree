@@ -1,12 +1,16 @@
 'use strict';
 
 angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$routeParams', '$timeout', 'utilService', 'constants', 'vegetationService',
-    function($rootScope, $scope, $routeParams, $timeout, utilService, constants, vegetationService) {
+function($rootScope, $scope, $routeParams, $timeout, utilService, constants, vegetationService) {
 
-    $scope.searchParams = $rootScope.searchParam;
+    $scope.pageSize = 20;
+    $scope.startIndex = 0;
+    $scope.searchParams = {};
     $scope.currentTree = null;
 
     $scope.mode = 'view';
+
+    $scope.loading = false;
 
     $scope.vegetations = [];
 
@@ -34,7 +38,7 @@ angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$ro
     };
 
     $scope.download = function(){
-        $scope.mode = mode;
+        $scope.mode = 'download';
     };
 
     $scope.startDownload = function(item){
@@ -55,19 +59,35 @@ angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$ro
 
 
     $scope.$on("search", function (event, data) {
-        /*vegetationService.getAll($scope.searchParams, function(resp){
-            $scope.vegetations = resp.Data;
-        });
-        */
+        $scope.vegetations = [];
         if(data.params.keyword) {
-            vegetationService.simpleSearch(data.params, function (resp) {
-                $scope.vegetations = resp.Data;
+            $scope.searchParams = angular.extend(data.params, {
+                Limit: $scope.pageSize,
+                Skip: $scope.startIndex
             });
+            $scope.doSearch = function() {
+                $scope.loading = true;
+                vegetationService.simpleSearch(data.params, function (resp) {
+                    $scope.vegetations = $scope.vegetations.concat(resp.Data);
+                    $scope.searchParams.Skip += $scope.pageSize;
+                    $scope.loading = false;
+                });
+            };
         } else {
-            vegetationService.getAll(data, function (resp) {
-                $scope.vegetations = resp.Data;
+            $scope.searchParams = angular.extend(data, {
+                Limit: $scope.pageSize,
+                Skip: $scope.startIndex
             });
+            $scope.doSearch = function() {
+                $scope.loading = true;
+                vegetationService.getAll($scope.searchParams, function (resp) {
+                    $scope.vegetations = $scope.vegetations.concat(resp.Data);
+                    $scope.searchParams.Skip += $scope.pageSize;
+                    $scope.loading = false;
+                });
+            };
         }
+        $scope.doSearch();
      });
 
     (function(){
