@@ -102,9 +102,9 @@
                 <h2>{{currentTree.Base.Names.ChineseName}}<span>{{currentTree.Base.Names.LatinName}}</span></h2>
                 <div class="divider"></div>
                 <div class="props">
-                    <div class="prop-row"><span class="title" style="width:42px;">树形</span><i class="icon-leaf"></i></div>
+                    <div class="prop-row"><span class="title" style="width:42px;">树形</span><span class="content">{{currentTree.Base.TreeForm}}</span></div>
                     <div class="prop-row"><span class="title">质感</span><span class="content">{{currentTree.Base.SkinTexture}}</span></div>
-                    <div class="prop-row"><span class="title">观赏性</span><i class="icon-flower"></i></div>
+                    <div class="prop-row"><span class="title">观赏性</span><span class="content">{{currentTree.Base.MainOrnamental}}</span></div>
                     <div class="prop-row"><span class="title">种类</span><span class="content">{{currentTree.Base.PlantType}}</span></div>
                 </div>
                 <div class="divider"></div>
@@ -117,17 +117,17 @@
                 </div>
                 <div class="divider"></div>
             </div>
-            <div class="senario-piece piece">
-                <h3>应用场景<span>共5种</span></h3>
+            <div class="senario-piece piece" ng-show="currentTree.Scenarios.length > 0">
+                <h3>应用场景<span>共{{currentTree.Scenarios.length}}种</span></h3>
                 <div class="scenario-list">
-                    <div class="scenario"></div>
+                    <div class="scenario" ng-repeat="scenario in currentTree.Scenarios"></div>
                 </div>
                 <div class="divider"></div>
             </div>
-            <div class="download-piece piece">
+            <div class="download-piece piece" ng-show="currentTree.Materials > 0">
                 <h3>素材下载</h3>
                 <div class="resource-list">
-                    <div class="resource">
+                    <div class="resource" ng-repeat="material in currentTree.Materials">
                         <div class="badge"></div>
                     </div>
                     <div class="more">更多格式敬请期待 ...</div>

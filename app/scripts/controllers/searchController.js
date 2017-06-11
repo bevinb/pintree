@@ -10,6 +10,8 @@ function($rootScope, $scope, $routeParams, $timeout, utilService, constants, veg
 
     $scope.loading = false;
 
+    $scope.showLoadMoreBtn = false;
+
     $scope.vegetations = [];
 
     $scope.selections = [];
@@ -55,10 +57,17 @@ function($rootScope, $scope, $routeParams, $timeout, utilService, constants, veg
         $scope.mode = 'view';
     };
 
+    //just for mock
+    $scope.genBrick = function () {
+        var height = ~~(Math.random() * 500) + 100;
+        var id = ~~(Math.random() * 10000);
+        return 'http://lorempixel.com/g/280/' + height + '/?' + id;
+    };
+
 
     $scope.$on("search", function (event, data) {
         $scope.vegetations = [];
-        if(data.params.keyword) {
+        if(typeof(data.params.Keyword) != 'undefined') {
             $scope.searchParams = angular.extend(data.params, {
                 Limit: $scope.pageSize,
                 Skip: $scope.startIndex
@@ -66,8 +75,10 @@ function($rootScope, $scope, $routeParams, $timeout, utilService, constants, veg
             $scope.doSearch = function() {
                 $scope.loading = true;
                 vegetationService.simpleSearch(data.params, function (resp) {
+                    //$.each(resp.Data, function(){this.MainPictureURL = $scope.genBrick();});
                     $scope.vegetations = $scope.vegetations.concat(resp.Data);
                     $scope.searchParams.Skip += $scope.pageSize;
+                    $scope.showLoadMoreBtn = resp.Data.length == $scope.pageSize;
                     $scope.loading = false;
                 });
             };
@@ -81,6 +92,7 @@ function($rootScope, $scope, $routeParams, $timeout, utilService, constants, veg
                 vegetationService.getAll($scope.searchParams, function (resp) {
                     $scope.vegetations = $scope.vegetations.concat(resp.Data);
                     $scope.searchParams.Skip += $scope.pageSize;
+                    $scope.showLoadMoreBtn = resp.Data.length == $scope.pageSize;
                     $scope.loading = false;
                 });
             };

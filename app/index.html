@@ -1,6 +1,5 @@
-<!-- NOTE: Please don not delete any of the comments below -->
 <!doctype html>
-<html class="no-js" ng-app="pintree">
+<html ng-app="pintree">
     <head>
         <meta charset="utf-8">
         <title>Pintree</title>
@@ -29,7 +28,7 @@
             <div class="wrapper">
                 <img class="logo" src="images/index_update_streams/u4.png">
                 <div class="search-input-wrapper">
-                    <input class="search-input" ng-model="keyword" ng-keydown="$event.keyCode == 13 && doSearch()" placeholder="搜你喜欢的...">
+                    <input class="search-input" ng-model="Keyword" ng-keydown="$event.keyCode == 13 && doSearch()" placeholder="搜你喜欢的...">
                     <a class="btn-search" ng-click="doSearch()"></a>
                 </div>
                 <span ng-if="!user">
@@ -49,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="search-bar-wrapper" ng-show="!!searchParams.keyword">
+            <div class="search-bar-wrapper">
                 <div class="wrapper">
                     <advanced-search-filter on-submit="doAdvancedSearch(params)"></advanced-search-filter>
                 </div>

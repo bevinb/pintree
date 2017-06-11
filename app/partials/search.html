@@ -1,5 +1,5 @@
-<div masonry reload-on-show reload-on-resize load-images="false" ng-class="{'download': mode=='download'}" infinite-scroll='doSearch()'
-     infinite-scroll-disabled='mode == "download" || loading'>
+
+<div masonry reload-on-show reload-on-resize load-images="true" ng-class="{'download': mode=='download'}">
     <div class="tree-item masonry-brick" ng-repeat="brick in vegetations">
         <div class="thumbnail" ng-class="{'checked': brick.isChecked}" ng-click="toggleSelection(brick)">
             <div class="project-cover">
@@ -25,6 +25,7 @@
         </div>
     </div>
 </div>
+<button ng-click="doSearch()"  ng-show="showLoadMoreBtn" ng-disabled="loading" class="btn btn-block">点击加载更多</button>
 
 <div class="detail-modal-viewer" ng-model="currentTree" on-close="currentTree=null" ng-show="!!currentTree"></div>
 

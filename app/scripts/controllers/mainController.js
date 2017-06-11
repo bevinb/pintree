@@ -5,7 +5,7 @@ function($rootScope, $scope, $location, $window, $cacheFactory, $timeout, Auth, 
 
     $scope.searchParams = {};
 
-    $scope.keyword = '';
+    $scope.Keyword = '';
 
     $scope.hottestKeywords = [];
 
@@ -14,7 +14,7 @@ function($rootScope, $scope, $location, $window, $cacheFactory, $timeout, Auth, 
     $scope.doSearch = function(){
 
         //$scope.$apply(function(){
-            $scope.searchParams.keyword = $scope.keyword;
+            $scope.searchParams.Keyword = $scope.Keyword;
         //});
         $scope.$broadcast("search", {params: $scope.searchParams});
     };
@@ -56,7 +56,7 @@ function($rootScope, $scope, $location, $window, $cacheFactory, $timeout, Auth, 
 
         $scope.setKeyword = function(target){
             if(target.getAttribute('search-link')) {
-                $scope.keyword = target.getAttribute('search-link');
+                $scope.Keyword = target.getAttribute('search-link');
                 $scope.doSearch();
             }
         };
@@ -86,9 +86,9 @@ function($rootScope, $scope, $location, $window, $cacheFactory, $timeout, Auth, 
         });
 
 
-        (function(){
-
-        })();
+        $timeout(function(){
+            $scope.doSearch();
+        });
         /*
         $(document).keydown(function(e){
             alert(222)
