@@ -12,6 +12,10 @@ angular.module('pintree').controller('SignUpCtrl', ['$scope', '$window', 'Auth',
             });
         }).catch(function (err) {
             console.log(err);
+            alertService.add({
+                msg: err.data? err.data.msg : err,
+                type: "danger"
+            });
         });
     };
 
@@ -24,8 +28,9 @@ angular.module('pintree').controller('SignUpCtrl', ['$scope', '$window', 'Auth',
         }).then(function () {
             $window.location.href = '#/';
         }).catch(function (err) {
+            console.log(err);
             alertService.add({
-                msg: err.msg,
+                msg: err.data? err.data.msg : err,
                 type: "danger"
             });
         });
