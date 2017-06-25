@@ -10,7 +10,7 @@ angular.module('pintree').controller('SignUpCtrl', ['$scope', '$window', 'Auth',
                 msg: '验证码已发送至您的邮箱，请登录查收！',
                 type: "success"
             });
-        }).catch(function (err) {
+        }, function (err) {
             console.log(err);
             alertService.add({
                 msg: err.data? err.data.msg : err,
@@ -26,8 +26,9 @@ angular.module('pintree').controller('SignUpCtrl', ['$scope', '$window', 'Auth',
             Password: $scope.Password,
             SecurityCode: $scope.SecurityCode
         }).then(function () {
+            $scope.dismissModal();
             $window.location.href = '#/';
-        }).catch(function (err) {
+        }, function (err) {
             console.log(err);
             alertService.add({
                 msg: err.data? err.data.msg : err,

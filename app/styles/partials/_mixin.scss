@@ -1,0 +1,52 @@
+@mixin text-ellipsis() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin multi-line-ellipsis($font-size, $line-height, $lines-to-show) {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+  margin: 0 auto;
+  font-size: $font-size;
+  line-height: $line-height;
+  -webkit-line-clamp: $lines-to-show;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin calc($property, $expression) {
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -o-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+@mixin bg-cover($url) {
+  background-image: url($url);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src = '#{$url}', sizingMethod='scale');
+  background-size: cover;
+  background-repeat: no-repeat;
+  //background-position: center center;
+}
+
+@mixin break-word() {
+  //-ms-word-break: break-all;
+  //word-break: break-all;
+  // Non standard for webkit
+
+  /* For Firefox */
+  word-break: break-all;
+  word-break: break-word;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}

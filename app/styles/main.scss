@@ -13,6 +13,7 @@
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/dropdowns";
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/alerts";
 
+@import "partials/mixin";
 @import "partials/header";
 @import "partials/search_bar";
 @import "partials/tree_item";
@@ -29,6 +30,9 @@ body{
   min-width:980px;
   //min-height:600px;
   background-color: rgb(250, 249, 247);
+  &.modal-opened {
+    overflow: hidden;
+  }
 }
 
 .wrapper {
@@ -130,6 +134,8 @@ input.ng-invalid {
   z-index: 1000;
   width: 100%;
   text-align: center;
+  @include calc("max-height", "100% - 56px");
+  overflow: auto;
   .advanced-search-bar {
     max-width: 1496px;
   }
@@ -157,7 +163,7 @@ input.ng-invalid {
   right: 20px;
   width:450px;
   border-radius: 3px;
-  background-color: rgba(0,0,0,0.8);
+  background: rgba(229,229,229,.95);
   text-align: center;
   padding-bottom:20px;
   .btn-bar {
@@ -174,3 +180,4 @@ input.ng-invalid {
     }
   }
 }
+

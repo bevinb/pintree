@@ -15,13 +15,13 @@ function(Restangular, constants, $cookies) {
             Restangular.one('vegetation').one('keywords', params.limit).get({}).then(cb);
         },
         getComments: function (params, cb) {
-            Restangular.one('vegetation', '{' + params.id + '}').one('comments/{' +
+            Restangular.one('vegetation', params.id).one('comments/{' +
                 params.skip + '}/{' + params.limit + '}').get({
 
             }).then(cb);
         },
         getAppendixes: function (params, cb) {
-            Restangular.one('vegetation', '{' + params.id + '}').one('appendixes').get({
+            Restangular.one('vegetation', params.id).one('appendixes').get({
 
             }).then(cb);
         },

@@ -26,10 +26,10 @@
                     scope.linellaeOpts = ['直线', '竖线', '曲线'];
                     scope.lightingConditionOpts = ['全日照', '半日照', '阴影', '任意'];
                     scope.mainOrnamentalOpts = ['观花', '观叶', '观枝', '观果', '香味'];
-                    scope.leafColorOpts =[{k:'黄',v:'yellow'}, {k:'白',v:'white'}, {k:'绿',v:'green'}, {k:'橙',v:'orange'},
+                    scope.leafColorOpts =[{k:'黄',v:'yellow'}, {k:'白',v:'#eee'}, {k:'绿',v:'green'}, {k:'橙',v:'orange'},
                         {k:'红',v:'red'}, {k:'紫',v:'purple'}, {k:'褐',v:'brown'}, {k:'蓝',v:'blue'}];
                     scope.flowerColorOpts = [{k:'红',v:'red'}, {k:'黄',v:'yellow'}, {k:'绿',v:'green'}, {k:'蓝',v:'blue'},
-                        {k:'紫',v:'purple'}, {k:'白',v:'white'}, {k:'粉',v:'pink'}, {k:'青',v:'cyan'}, {k:'桃红',v:'#fd4e71'}, {k:'橙',v:'orange'}];
+                        {k:'紫',v:'purple'}, {k:'白',v:'#eee'}, {k:'粉',v:'pink'}, {k:'青',v:'cyan'}, {k:'桃红',v:'#fd4e71'}, {k:'橙',v:'orange'}];
                     scope.florescenceOpts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
                     scope.togglePlantType = function(v){
@@ -176,7 +176,9 @@
                             scope.params.LightingCondition = [v];
                         }
                     };
-
+                    scope.$watch('showAdvanced', function(newValue, oldValue){
+                        angular.element(document.body).toggleClass('modal-opened', newValue);
+                    });
                     scope.showAdvanced = false;
                     scope.toggleStatus = function(v, k){
                         scope.showAdvanced = !scope.showAdvanced;

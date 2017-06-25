@@ -14,9 +14,6 @@ angular.module('pintree').directive('detailModalViewer', ['$compile', 'utilServi
             return {
                 pre: function(scope, element, iAttrs) {
                     scope.zoomed = false;
-                    scope.toggleStatus = function(v, k){
-                        scope.showAdvanced = !scope.showAdvanced;
-                    };
                     scope.close = function(v, k){
                         scope.onClose();
                     };
@@ -37,6 +34,7 @@ angular.module('pintree').directive('detailModalViewer', ['$compile', 'utilServi
         },
         controller: function($scope){
             $scope.$watch('value', function(v){
+                angular.element(document.body).toggleClass('modal-opened', !!v);
                 if(!v)return;
                 //$scope.relatedTrees = genBricks();
                 vegetationService.getById(v.Id, function(resp){

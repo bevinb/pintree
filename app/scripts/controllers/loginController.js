@@ -10,7 +10,7 @@ angular.module('pintree').controller('LoginCtrl', ['$scope', '$window', 'Auth', 
         }).catch(function (err) {
             console.log(err);
             alertService.add({
-                msg: err.data? err.data.msg : '用户名或密码错误',
+                msg: err.data? err.data.msg : '登录失败，用户名或密码错误',
                 type: "danger"
             });
         });
