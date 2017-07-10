@@ -1,5 +1,5 @@
-angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$routeParams', '$timeout', 'utilService', 'constants', 'vegetationService',
-function($rootScope, $scope, $routeParams, $timeout, utilService, constants, vegetationService) {
+angular.module('pintree').controller('SearchCtrl', ['$rootScope', '$scope', '$routeParams', '$timeout', 'utilService', 'constants', 'vegetationService', 'User',
+function($rootScope, $scope, $routeParams, $timeout, utilService, constants, vegetationService, User) {
     'use strict';
     $scope.pageSize = 20;
     $scope.startIndex = 0;
@@ -64,6 +64,14 @@ function($rootScope, $scope, $routeParams, $timeout, utilService, constants, veg
         return 'http://lorempixel.com/g/280/' + height + '/?' + id;
     };
 
+    $scope.toggleFavor = function(item){
+        if(item.Favor) {
+            User.favorVegetation(item.Id);
+        } else {
+            User.unfavorVegetation(item.Id);
+        }
+        item.Favor = !item.Favor;
+    };
 
     $scope.$on("search", function (event, data) {
         $scope.vegetations = [];

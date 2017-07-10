@@ -9,7 +9,7 @@
                     <p>拉丁名：{{brick.Names.LatinName}}</p>
                     <p>别名：{{brick.Names.Alias}}</p>
                     <!--<p>界：{{brick.Names.ChineseName}}</p>-->
-                    <i class="btn-like liked"></i>
+                    <i class="btn-like" ng-class="{'liked': brick.Favor}" ng-click="toggleFavor(brick);$event.stopPropagation();"></i>
                     <i class="btn-check"></i>
                 </div>
             </div>
