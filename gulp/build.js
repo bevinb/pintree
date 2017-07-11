@@ -58,7 +58,7 @@ gulp.task('html', ['styles', 'scripts', 'partials'], function () {
     .pipe($.uglify({preserveComments: saveLicense}))
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
-    .pipe($.replace('bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap','fonts'))
+    .pipe($.replace('bower_components/font-awesome/fonts','fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore)
     .pipe(userefAssets.restore())
@@ -84,16 +84,16 @@ gulp.task('images', function () {
     .pipe($.size());
 });
 
-// gulp.task('fonts', function () {
-//   return $.bowerFiles()
-//     .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
-//     .pipe($.flatten())
-//     .pipe(gulp.dest('dist/fonts'))
-//     .pipe($.size());
-// });
+gulp.task('fonts', function () {
+   return gulp.src('app/bower_components/font-awesome/fonts/**/*')
+     //.pipe($.filter('**/*.{eot,svg,ttf,woff}'))
+     .pipe($.flatten())
+     .pipe(gulp.dest("dist/fonts"))
+     .pipe($.size());
+});
 
 gulp.task('clean', function () {
   return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.clean());
 });
 
-gulp.task('build', ['html', 'partials', 'images', 'misc']);
+gulp.task('build', ['html', 'partials', 'images', 'fonts', 'misc']);
